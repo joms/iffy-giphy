@@ -1,0 +1,11 @@
+.giphyrow {
+    display: flex;
+    flex-direction: row;
+    height: 8rem;
+    padding: 0.5rem 0;
+
+    img {
+        object-fit: cover;
+        width: 8rem;
+    }
+}

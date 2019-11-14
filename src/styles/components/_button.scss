@@ -1,0 +1,23 @@
+button {
+    border: none;
+    background: #3e3e3e;
+    border-radius: 5px;
+    color: white;
+
+    &:not(:first-of-type) {
+        margin-left: 0.5rem;
+    }
+
+    &.active {
+        color: #00e6ff;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        // color: darken(white, 25%);
+        background-color: lighten(#3e3e3e, 10%);
+    }
+}

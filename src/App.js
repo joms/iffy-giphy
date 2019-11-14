@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import './styles/styles.scss';
+import '@fortawesome/fontawesome-free/css/all.css';
 import * as giphyFetch from './utils/giphyFetch';
-import GiphyList, { CARD, ROW } from './components/GiphyList/GiphyList';
+import GiphyList, { ROW } from './components/GiphyList';
 import { GiphyRow, GiphyCard } from './components/GiphyListItem';
+import GiphyListController from './components/GiphyListController';
 
 function App() {
     const [searchString, setSearchString] = useState('');
@@ -11,7 +14,7 @@ function App() {
         pagination: {},
     });
     const [error, setError] = useState(null);
-    const [mode, setMode] = useState(ROW);
+    const [mode, setMode] = useState();
 
     useEffect(() => {
         if (searchString.length < 3) {
@@ -27,13 +30,18 @@ function App() {
     return (
         <div className="App">
             <header>
-                <input
-                    type="text"
-                    value={searchString}
-                    onChange={e => setSearchString(e.target.value)}
-                    placeholder="Search"
-                />
-                <button onClick={() => setMode(mode === ROW ? CARD : ROW)}>{mode}</button>
+                <div>
+                    <input
+                        type="text"
+                        value={searchString}
+                        onChange={e => setSearchString(e.target.value)}
+                        placeholder="Search"
+                    />
+                </div>
+                <h2>IFFY-GIPHY</h2>
+                <div>
+                    <GiphyListController onChange={_mode => setMode(_mode)} />
+                </div>
             </header>
             <main>
                 <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />

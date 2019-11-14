@@ -1,0 +1,45 @@
+@import './reboot';
+@import './components/all';
+
+.App {
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 0.5rem 1rem;
+    }
+
+    main {
+        flex: 1 0 auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+
+        .boo {
+            text-align: center;
+            font-size: 5rem;
+            opacity: 0.3;
+        }
+    }
+
+    footer {
+        margin-top: 2rem;
+        flex-shrink: 0;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+}

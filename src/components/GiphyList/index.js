@@ -1,3 +1,5 @@
-import GiphyList from './GiphyList';
+import GiphyList, { CARD, ROW } from './GiphyList';
+
+export { CARD, ROW };
 
 export default GiphyList;

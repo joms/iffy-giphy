@@ -4,8 +4,18 @@ import PropTypes from 'prop-types';
 export const ROW = 'ROW';
 export const CARD = 'CARD';
 
-const GiphyList = ({ giphs, as: As, mode = ROW }) => {
-    return giphs.map(gif => <As key={gif.id} gif={gif} />);
+const GiphyList = ({ giphs, as: As, mode }) => {
+    return (
+        <div className={`giphylist giphylist-${mode.toLowerCase()}`}>
+            {giphs.map(gif => (
+                <As key={gif.id} gif={gif} />
+            ))}
+        </div>
+    );
+};
+
+GiphyList.defaultProps = {
+    mode: CARD,
 };
 
 GiphyList.propTypes = {
