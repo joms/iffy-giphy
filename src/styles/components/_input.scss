@@ -1,0 +1,19 @@
+input {
+    background-color: transparent;
+    border: 1px solid $accent1;
+    border-radius: 5px;
+    padding: 0.25rem 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    color: $primary;
+
+    &:focus {
+        outline: $accent2 auto 5px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    input {
+        width: 100%;
+    }
+}

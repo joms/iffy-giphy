@@ -1,45 +1,78 @@
 @import './reboot';
+@import './variables';
 @import './components/all';
 
-.App {
-    font-family: Arial, Helvetica, sans-serif;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-        padding: 0.5rem 1rem;
-    }
-
-    main {
-        flex: 1 0 auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
+body {
+    background-color: $background;
+    color: $primary;
+    .App {
+        font-family: Arial, Helvetica, sans-serif;
 
         display: flex;
         flex-direction: column;
-        align-content: center;
-        justify-content: center;
+        min-height: 100vh;
 
-        .boo {
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0.5rem 1rem;
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+
+            .boo {
+                text-align: center;
+                font-size: 5rem;
+                opacity: 0.3;
+            }
+        }
+
+        footer {
+            margin-top: 2rem;
+            flex-shrink: 0;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
             text-align: center;
-            font-size: 5rem;
-            opacity: 0.3;
         }
     }
+}
 
-    footer {
-        margin-top: 2rem;
-        flex-shrink: 0;
-        height: 2rem;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
+@media only screen and (max-width: 768px) {
+    /* Mobile overrides */
+    body {
+        .App {
+            header {
+                flex-direction: column;
+                & :nth-child(1) {
+                    order: 2;
+                }
+                & :nth-child(2) {
+                    order: 1;
+                }
+                & :nth-child(3) {
+                    order: 3;
+                }
+
+                > div {
+                    width: 100%;
+
+                    &.giphylist-controller .buttons {
+                        float: right;
+                    }
+                }
+            }
+        }
     }
 }

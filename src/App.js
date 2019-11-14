@@ -5,6 +5,7 @@ import * as giphyFetch from './utils/giphyFetch';
 import GiphyList, { ROW } from './components/GiphyList';
 import { GiphyRow, GiphyCard } from './components/GiphyListItem';
 import GiphyListController from './components/GiphyListController';
+import Input from './components/Input';
 
 function App() {
     const [searchString, setSearchString] = useState('');
@@ -31,7 +32,7 @@ function App() {
         <div className="App">
             <header>
                 <div>
-                    <input
+                    <Input
                         type="text"
                         value={searchString}
                         onChange={e => setSearchString(e.target.value)}
@@ -39,9 +40,7 @@ function App() {
                     />
                 </div>
                 <h2>IFFY-GIPHY</h2>
-                <div>
-                    <GiphyListController onChange={_mode => setMode(_mode)} />
-                </div>
+                <GiphyListController onChange={_mode => setMode(_mode)} />
             </header>
             <main>
                 <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />

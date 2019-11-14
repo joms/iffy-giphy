@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import Button from '../Button';
+import Button, { Buttons } from '../Button';
 
 import { CARD } from '../GiphyList';
 
@@ -20,11 +20,13 @@ const GiphyListController = ({ onChange }) => {
 
     return (
         <div className="giphylist-controller">
-            {Object.entries(BUTTONS).map(([type, icon]) => (
-                <Button onClick={onClick(type)} className={cx({ active: mode === type })}>
-                    <i className={`fas fa-${icon}`} />
-                </Button>
-            ))}
+            <Buttons>
+                {Object.entries(BUTTONS).map(([type, icon]) => (
+                    <Button key={type} onClick={onClick(type)} className={cx({ active: mode === type })}>
+                        <i className={`fas fa-${icon}`} />
+                    </Button>
+                ))}
+            </Buttons>
         </div>
     );
 };
