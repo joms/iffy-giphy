@@ -3,6 +3,13 @@ export const apiFetch = url => {
         throw new Error('Expected url to be of instance URL');
     }
 
-    // TODO Add handler for 401
-    return fetch(url).then(res => res.json());
+    return fetch(url).then(res => {
+        if (!res.ok) {
+            return res
+                .json()
+                .then(json => Promise.reject({ status: res.status, ok: false, statusText: res.statusText, ...json }));
+        }
+
+        return res.json();
+    });
 };

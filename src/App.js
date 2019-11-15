@@ -6,9 +6,13 @@ import GiphyList, { ROW } from './components/GiphyList';
 import { GiphyRow, GiphyCard } from './components/GiphyListItem';
 import GiphyListController from './components/GiphyListController';
 import Input from './components/Input';
+import NetworkError from './components/NetworkError';
+
+let timeout = null;
 
 function App() {
     const [searchString, setSearchString] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
     const [searchResult, setSearchResult] = useState({
         data: [],
         meta: {},
@@ -17,15 +21,31 @@ function App() {
     const [error, setError] = useState(null);
     const [mode, setMode] = useState();
 
+    const setIsSearchingTrue = () => setIsSearching(true);
+
     useEffect(() => {
+        clearTimeout(timeout);
         if (searchString.length < 3) {
             return;
         }
 
+        // use a timeout to prevent displaying loading before it's really necessary
+        timeout = setTimeout(() => {
+            setIsSearchingTrue();
+        }, 100);
+
         giphyFetch
             .search({ q: searchString })
-            .then(result => setSearchResult(result))
-            .catch(err => setError(err));
+            .then(result => {
+                clearTimeout(timeout);
+                setIsSearching(false);
+                setSearchResult(result);
+            })
+            .catch(err => {
+                clearTimeout(timeout);
+                setIsSearching(false);
+                setError(err);
+            });
     }, [searchString]);
 
     return (
@@ -43,7 +63,13 @@ function App() {
                 <GiphyListController onChange={_mode => setMode(_mode)} />
             </header>
             <main>
-                <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
+                {isSearching || error ? (
+                    <div className="boo">
+                        {isSearching ? <h1>Loading...</h1> : error ? <NetworkError error={error} /> : 'Uh oh'}
+                    </div>
+                ) : (
+                    <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
+                )}
             </main>
             <footer>Powered By GIPHY</footer>
         </div>
