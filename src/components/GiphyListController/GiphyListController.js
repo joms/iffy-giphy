@@ -22,7 +22,12 @@ const GiphyListController = ({ onChange }) => {
         <div className="giphylist-controller">
             <Buttons>
                 {Object.entries(BUTTONS).map(([type, icon]) => (
-                    <Button key={type} onClick={onClick(type)} className={cx({ active: mode === type })}>
+                    <Button
+                        key={type}
+                        onClick={onClick(type)}
+                        className={cx({ active: mode === type })}
+                        title={`${type.toLowerCase()}-view`}
+                    >
                         <i className={`fas fa-${icon}`} />
                     </Button>
                 ))}
