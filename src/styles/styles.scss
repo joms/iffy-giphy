@@ -30,14 +30,18 @@ body {
             align-content: center;
             justify-content: center;
 
+            a {
+                color: $accent2;
+            }
+
             .boo {
                 text-align: center;
                 font-size: 5rem;
                 opacity: 0.3;
             }
 
-            a {
-                color: $accent2;
+            .load-controller {
+                padding-top: 1rem;
             }
         }
 

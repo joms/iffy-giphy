@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './styles/styles.scss';
 import '@fortawesome/fontawesome-free/css/all.css';
 import * as giphyFetch from './utils/giphyFetch';
@@ -7,6 +7,7 @@ import { GiphyRow, GiphyCard } from './components/GiphyListItem';
 import GiphyListController from './components/GiphyListController';
 import Input from './components/Input';
 import NetworkError from './components/NetworkError';
+import Button from './components/Button';
 
 let timeout = null;
 
@@ -23,7 +24,7 @@ function App() {
 
     const setIsSearchingTrue = () => setIsSearching(true);
 
-    useEffect(() => {
+    const loadGifs = (searchString, offset = 0) => {
         clearTimeout(timeout);
         if (searchString.length < 3) {
             return;
@@ -35,7 +36,7 @@ function App() {
         }, 100);
 
         giphyFetch
-            .search({ q: searchString })
+            .search({ q: searchString, offset })
             .then(result => {
                 clearTimeout(timeout);
                 setIsSearching(false);
@@ -46,6 +47,10 @@ function App() {
                 setIsSearching(false);
                 setError(err);
             });
+    };
+
+    useEffect(() => {
+        loadGifs(searchString);
     }, [searchString]);
 
     return (
@@ -67,12 +72,37 @@ function App() {
                     </div>
                 ) : (
                     <>
-                        {searchResult.pagination.count && (
-                            <div>
-                                Showing {searchResult.pagination.count} of {searchResult.pagination.total_count} gifs
+                        {searchResult.pagination.count && <div>Found {searchResult.pagination.total_count} gifs</div>}
+                        <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
+                        {searchResult.pagination.count < searchResult.pagination.total_count && (
+                            <div className="load-controller">
+                                <Button
+                                    disabled={searchResult.pagination.offset < 25}
+                                    title="Show previous 25 gifs"
+                                    onClick={() =>
+                                        loadGifs(
+                                            searchString,
+                                            searchResult.pagination.offset - searchResult.pagination.count
+                                        )
+                                    }
+                                >
+                                    <i className="fa fa-angle-left" /> 25
+                                </Button>
+                                <Button
+                                    disabled={searchResult.pagination.offset > searchResult.pagination.total_count - 25}
+                                    title="Show next 25 gifs"
+                                    style={{ float: 'right' }}
+                                    onClick={() =>
+                                        loadGifs(
+                                            searchString,
+                                            searchResult.pagination.offset + searchResult.pagination.count
+                                        )
+                                    }
+                                >
+                                    25 <i className="fa fa-angle-right" />
+                                </Button>
                             </div>
                         )}
-                        <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
                     </>
                 )}
             </main>
