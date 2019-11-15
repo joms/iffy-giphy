@@ -82,10 +82,7 @@ function App() {
                                     title="Show previous 25 gifs"
                                     onClick={() => {
                                         window.scrollTo(0, 0);
-                                        loadGifs(
-                                            searchString,
-                                            searchResult.pagination.offset - searchResult.pagination.count
-                                        );
+                                        loadGifs(searchString, Math.max(0, searchResult.pagination - 25));
                                     }}
                                 >
                                     <i className="fa fa-angle-left" /> 25
