@@ -9,7 +9,7 @@ const GiphyCard = ({ gif }) => {
                     {gif.title}
                     {gif.user && <> by {gif.user.display_name}</>}
                 </span>
-                <img src={gif.images.preview_gif.url} alt={gif.title} />
+                <img src={gif.images.preview_webp.url} alt={gif.title} />
             </a>
         </div>
     );

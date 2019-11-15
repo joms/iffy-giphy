@@ -5,7 +5,7 @@ import Button, { Buttons } from '../Button';
 const GiphyRow = ({ gif }) => {
     return (
         <div className="giphyrow">
-            <img src={gif.images.preview_gif.url} alt={gif.title} />
+            <img src={gif.images.preview_webp.url} alt={gif.title} />
             <div className="description">
                 <h4>{gif.title}</h4>
                 {gif.user && <span>Uploaded by {gif.user.display_name}</span>}
