@@ -33,7 +33,7 @@ function App() {
         // use a timeout to prevent displaying loading before it's really necessary
         timeout = setTimeout(() => {
             setIsSearchingTrue();
-        }, 100);
+        }, 200);
 
         giphyFetch
             .search({ q, offset })
