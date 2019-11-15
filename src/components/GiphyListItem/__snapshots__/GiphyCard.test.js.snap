@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GiphyCard> matches snapshot 1`] = `
+<div
+  className="giphycard"
+>
+  <a
+    href="https://giphy.com/gifs/dl-a93jwI0wkWTQs"
+    target="blank"
+  >
+    <span
+      className="overlay"
+    >
+      backing up homer simpson GIF
+    </span>
+    <img
+      alt="backing up homer simpson GIF"
+      src="https://media0.giphy.com/media/Zk9mW5OmXTz9e/giphy-preview.webp?cid=bf19f9f15599a35642e44dff8fea75a22569381a0f67085e&rid=giphy-preview.webp"
+    />
+  </a>
+</div>
+`;
+
+exports[`<GiphyList> matches snapshot 1`] = `
+<div
+  className="giphylist giphylist-card"
+>
+  <GiphyCard
+    gif={
+      Object {
+        "bitly_gif_url": "https://gph.is/2cq6Bi4",
+        "bitly_url": "https://gph.is/2cq6Bi4",
+        "content_url": "",
+        "embed_url": "https://giphy.com/embed/a93jwI0wkWTQs",
+        "id": "a93jwI0wkWTQs",
+        "images": Object {
+          "original": Object {
+            "frames": "13",
+            "hash": "0e16308f84a3404fb5b19ba99735ddc4",
+            "height": "327",
+            "mp4": "https://media0.giphy.com/media/Zk9mW5OmXTz9e/giphy.mp4?cid=bf19f9f15599a35642e44dff8fea75a22569381a0f67085e&rid=giphy.mp4",
+            "mp4_size": "359136",
+            "size": "506259",
+            "url": "https://media0.giphy.com/media/Zk9mW5OmXTz9e/giphy.gif?cid=bf19f9f15599a35642e44dff8fea75a22569381a0f67085e&rid=giphy.gif",
+            "webp": "https://media0.giphy.com/media/Zk9mW5OmXTz9e/giphy.webp?cid=bf19f9f15599a35642e44dff8fea75a22569381a0f67085e&rid=giphy.webp",
+            "webp_size": "441152",
+            "width": "500",
+          },
+          "preview_webp": Object {
+            "height": "92",
+            "size": "33274",
+            "url": "https://media0.giphy.com/media/Zk9mW5OmXTz9e/giphy-preview.webp?cid=bf19f9f15599a35642e44dff8fea75a22569381a0f67085e&rid=giphy-preview.webp",
+            "width": "140",
+          },
+        },
+        "import_datetime": "2016-09-15 16:13:40",
+        "is_sticker": 0,
+        "rating": "g",
+        "slug": "dl-a93jwI0wkWTQs",
+        "source": "https://popkey.co/m/1Z4dL-homer-back+away",
+        "source_post_url": "https://popkey.co/m/1Z4dL-homer-back+away",
+        "source_tld": "popkey.co",
+        "title": "backing up homer simpson GIF",
+        "trending_datetime": "1970-01-01 00:00:00",
+        "type": "gif",
+        "url": "https://giphy.com/gifs/dl-a93jwI0wkWTQs",
+        "username": "",
+      }
+    }
+    key="a93jwI0wkWTQs"
+  />
+</div>
+`;

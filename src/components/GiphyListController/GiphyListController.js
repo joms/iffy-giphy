@@ -17,7 +17,9 @@ const GiphyListController = ({ onChange }) => {
         onChange(mode);
     }, [mode, onChange]);
 
-    const onClick = _mode => e => setMode(_mode);
+    const onClick = _mode => e => {
+        setMode(_mode);
+    };
 
     return (
         <div className="giphylist-controller">
@@ -38,7 +40,7 @@ const GiphyListController = ({ onChange }) => {
 };
 
 GiphyListController.propTypes = {
-    gif: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default GiphyListController;

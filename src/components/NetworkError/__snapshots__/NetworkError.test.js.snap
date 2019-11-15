@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NetworkError> matches snapshot 1`] = `
+<h1>
+  Error 
+  401
+  : 
+  No API key found in request
+</h1>
+`;

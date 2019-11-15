@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GiphyListController> matches snapshot 1`] = `
+<GiphyListController
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "CARD",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="giphylist-controller"
+  >
+    <Buttons>
+      <div
+        className="buttons"
+      >
+        <Button
+          className=""
+          disabled={false}
+          key="ROW"
+          onClick={[Function]}
+          title="row-view"
+        >
+          <button
+            className=""
+            disabled={false}
+            onClick={[Function]}
+            title="row-view"
+          >
+            <i
+              className="fas fa-list"
+            />
+          </button>
+        </Button>
+        <Button
+          className="active"
+          disabled={false}
+          key="CARD"
+          onClick={[Function]}
+          title="card-view"
+        >
+          <button
+            className="active"
+            disabled={false}
+            onClick={[Function]}
+            title="card-view"
+          >
+            <i
+              className="fas fa-th"
+            />
+          </button>
+        </Button>
+      </div>
+    </Buttons>
+  </div>
+</GiphyListController>
+`;

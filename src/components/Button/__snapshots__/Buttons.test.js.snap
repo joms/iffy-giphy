@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Buttons> matches snapshot 1`] = `
+<div
+  className="buttons"
+>
+  <Button
+    disabled={false}
+    onClick={[Function]}
+  >
+    Yolo
+  </Button>
+  <Button
+    disabled={false}
+    onClick={[Function]}
+  >
+    Swag
+  </Button>
+</div>
+`;
