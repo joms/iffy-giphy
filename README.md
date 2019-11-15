@@ -1,8 +1,30 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# TODO
-[ ] Search
-[ ] List and card renderer
+## Set-up
+
+To run this project, an API key from [Giphy](https://developers.giphy.com/docs/api#quick-start-guide) is required. The API key should be put into the .env file. After this is done, you can run the project in the usual way.
+
+## Plan of attack
+
+First of all I wanted to figure out the communication with Giphy. So I set up a rudimentary API fetcher that could be used to experiment with the API. I then built the application around rendering the results from this fetcher.
+
+## Libraries
+
+### react-scripts
+
+Create-react-app comes with what to me is a ton of benefits; One does no longer have to care about updating the single components of a React setup. For instance react-dom version, webpack, jest and other tools. It also provides a sensible webpack configuration with a bunch of smart functionality and well tested configurations. It also provides a default jest version that's tested with the current React version.
+
+### node-sass
+
+SCSS rocks! And to add support for it with react-scripts, the only thing one has to do is installing this package.
+
+### classnames
+
+A neat way of doing conditional classnames for components.
+
+### reboot.scss
+
+Reboot is the CSS reset from Bootstrap which provides a nice way of ensuring the baseline for your DOM looks the same across all browsers.
 
 ## Available Scripts
 
