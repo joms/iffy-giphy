@@ -15,4 +15,8 @@ const GiphyCard = ({ gif }) => {
     );
 };
 
+GiphyCard.propTypes = {
+    gif: PropTypes.object.isRequired,
+};
+
 export default GiphyCard;
