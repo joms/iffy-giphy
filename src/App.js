@@ -24,9 +24,9 @@ function App() {
 
     const setIsSearchingTrue = () => setIsSearching(true);
 
-    const loadGifs = (searchString, offset = 0) => {
+    const loadGifs = useCallback((q, offset = 0) => {
         clearTimeout(timeout);
-        if (searchString.length < 3) {
+        if (q.length < 3) {
             return;
         }
 
@@ -36,7 +36,7 @@ function App() {
         }, 100);
 
         giphyFetch
-            .search({ q: searchString, offset })
+            .search({ q, offset })
             .then(result => {
                 clearTimeout(timeout);
                 setIsSearching(false);
@@ -47,11 +47,11 @@ function App() {
                 setIsSearching(false);
                 setError(err);
             });
-    };
+    }, []);
 
     useEffect(() => {
         loadGifs(searchString);
-    }, [searchString]);
+    }, [searchString, loadGifs]);
 
     return (
         <div className="App">
@@ -72,7 +72,7 @@ function App() {
                     </div>
                 ) : (
                     <>
-                        {searchResult.pagination.count && <div>Found {searchResult.pagination.total_count} gifs</div>}
+                        {!!searchResult.pagination.count && <div>Found {searchResult.pagination.total_count} gifs</div>}
                         <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
                         {searchResult.pagination.count < searchResult.pagination.total_count && (
                             <div className="load-controller">
