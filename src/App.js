@@ -61,6 +61,7 @@ function App() {
                     value={searchString}
                     onChange={e => setSearchString(e.target.value)}
                     placeholder="Search"
+                    autoFocus
                 />
                 <h2>IFFY-GIPHY</h2>
                 <GiphyListController onChange={_mode => setMode(_mode)} />
