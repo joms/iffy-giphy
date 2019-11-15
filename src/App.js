@@ -79,12 +79,13 @@ function App() {
                                 <Button
                                     disabled={searchResult.pagination.offset < 25}
                                     title="Show previous 25 gifs"
-                                    onClick={() =>
+                                    onClick={() => {
+                                        window.scrollTo(0, 0);
                                         loadGifs(
                                             searchString,
                                             searchResult.pagination.offset - searchResult.pagination.count
-                                        )
-                                    }
+                                        );
+                                    }}
                                 >
                                     <i className="fa fa-angle-left" /> 25
                                 </Button>
@@ -92,12 +93,13 @@ function App() {
                                     disabled={searchResult.pagination.offset > searchResult.pagination.total_count - 25}
                                     title="Show next 25 gifs"
                                     style={{ float: 'right' }}
-                                    onClick={() =>
+                                    onClick={() => {
+                                        window.scrollTo(0, 0);
                                         loadGifs(
                                             searchString,
                                             searchResult.pagination.offset + searchResult.pagination.count
-                                        )
-                                    }
+                                        );
+                                    }}
                                 >
                                     25 <i className="fa fa-angle-right" />
                                 </Button>
