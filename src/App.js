@@ -51,14 +51,12 @@ function App() {
     return (
         <div className="App">
             <header>
-                <div>
-                    <Input
-                        type="text"
-                        value={searchString}
-                        onChange={e => setSearchString(e.target.value)}
-                        placeholder="Search"
-                    />
-                </div>
+                <Input
+                    type="text"
+                    value={searchString}
+                    onChange={e => setSearchString(e.target.value)}
+                    placeholder="Search"
+                />
                 <h2>IFFY-GIPHY</h2>
                 <GiphyListController onChange={_mode => setMode(_mode)} />
             </header>
@@ -68,7 +66,14 @@ function App() {
                         {isSearching ? <h1>Loading...</h1> : error ? <NetworkError error={error} /> : 'Uh oh'}
                     </div>
                 ) : (
-                    <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
+                    <>
+                        {searchResult.pagination.count && (
+                            <div>
+                                Showing {searchResult.pagination.count} of {searchResult.pagination.total_count} gifs
+                            </div>
+                        )}
+                        <GiphyList giphs={searchResult.data} mode={mode} as={mode === ROW ? GiphyRow : GiphyCard} />
+                    </>
                 )}
             </main>
             <footer>Powered By GIPHY</footer>
